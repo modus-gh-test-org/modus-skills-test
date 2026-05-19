@@ -29,4 +29,4 @@ jobs:
       - name: Validate
         if: steps.changed.outputs.files != ''
         run: |
-          echo "${{ steps.changed.outputs.files }}" | sed '/^$/d' | xargs -r -d '\n' -- npx --yes @modus/skill-agent-manifests validate --
+          echo "${{ steps.changed.outputs.files }}" | sed '/^$/d' | xargs -r -d '\n' -- npx --yes @modus-data/skill-agent-manifests@1 validate --
