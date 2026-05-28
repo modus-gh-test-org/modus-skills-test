@@ -1,0 +1,32 @@
+apiVersion: modus.dev/v1
+kind: Skill
+metadata:
+  externalUid: 89217b66-31d3-4c7e-8e4a-cd98e007f0eb
+  name: S4 Skill Renamed
+spec:
+  description: S4 skill baseline
+  expectedOutput: S3 baseline checkpoint
+  model: anthropic/claude-sonnet-4.6
+  instructions:
+    - S4 instr one
+    - S4 instr two
+  toolset:
+    tools:
+      - web_search
+    mcpServers: []
+  supervision:
+    subordinates: []
+  connections: []
+  contexts: []
+  access:
+    groupPermissions:
+      dev:
+        use: true
+        manage: false
+    guardrails:
+      - s4-guard
+  interfaces: []
+  evaluations:
+    - id: eval-qa-1
+      task: QA eval task
+      expectedOutput: QA eval expected

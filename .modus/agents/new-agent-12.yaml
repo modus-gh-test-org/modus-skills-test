@@ -1,0 +1,57 @@
+apiVersion: modus.dev/v1
+kind: Agent
+metadata:
+  externalUid: 81283ec3-e5ed-4a9f-919d-fbca2ba4ff42
+  name: New Agent
+spec:
+  type: workflow
+  description: Daily at 3:58 PM
+  trigger:
+    type: schedule
+    schedule:
+      frequency: daily
+      timeOfDay: 15:58
+      timezone: Asia/Jerusalem
+  agentSelection:
+    agents: []
+  workflowStructure:
+    nodes:
+      - id: "1"
+        data:
+          label: Start Automation
+          trigger:
+            schedule:
+              timezone: Asia/Jerusalem
+              frequency: daily
+              time_of_day: 15:58
+            trigger_type: schedule
+          description: Daily at 3:58 PM
+        type: start
+        position:
+          x: 0
+          y: 50
+      - id: node_1778590627842_1001
+        data:
+          agent:
+            task: 1+1=?
+            model: gpt-5.2
+            agent_id: 6
+            agent_ids:
+              - 6
+          label: Agent Node
+          description: slack-mcp
+        type: agent
+        position:
+          x: -34
+          y: 248
+    edges:
+      - id: e_1_out_node_1778590627842_1001
+        source: "1"
+        target: node_1778590627842_1001
+  access:
+    groupPermissions:
+      __everyone__:
+        use: true
+        manage: true
+    guardrails: []
+  interfaces: []

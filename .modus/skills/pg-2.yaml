@@ -1,0 +1,53 @@
+apiVersion: modus.dev/v1
+kind: Skill
+metadata:
+  externalUid: 982fa959-20bf-46af-8cdf-acabd34ade9e
+  name: pg
+spec:
+  description: ""
+  expectedOutput: ""
+  model: anthropic/claude-sonnet-4.6
+  instructions: []
+  toolset:
+    sql_runner:
+      - SELECT:2511d470-e4aa-4d31-9fd5-db8916c797b3:BIRD:card_games
+  supervision:
+    subordinates: []
+  connections:
+    - connectionUid: 2511d470-e4aa-4d31-9fd5-db8916c797b3
+      contextPreferences:
+        path:
+          - BIRD
+          - card_games
+  contexts:
+    - kind: query
+      query:
+        rules:
+          - rules:
+              - field: data_asset
+                value: 2511d470-e4aa-4d31-9fd5-db8916c797b3:BIRD/card_games
+                operator: in
+              - field: verification_status
+                value: positive,neutral
+                operator: in
+            combinator: and
+        combinator: or
+  access:
+    groupPermissions:
+      __everyone__:
+        use: true
+        manage: true
+    guardrails: []
+    ownerUserId: user_394iVT1ubV3OXrGmIqI0a8QrXLP
+    ownerEmail: eladdo@modus.direct
+  interfaces:
+    - id: interface_1777814216715
+      type: mcp
+      name: MCP Server
+      config:
+        tokens:
+          - tokenId: 900c5bd3-75b0-49d5-a4cd-885b34097e00
+            createdAt: 2026-05-03T13:19:57.726Z
+            tokenPrefix: 1926e6986add8cd7
+      secretRefs: {}
+  evaluations: []

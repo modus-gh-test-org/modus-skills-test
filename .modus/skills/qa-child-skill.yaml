@@ -1,0 +1,33 @@
+apiVersion: modus.dev/v1
+kind: Skill
+metadata:
+  externalUid: 723dbdef-aa63-4bee-b6c5-ee96dc2910b1
+  name: S5 Renamed Skill
+spec:
+  description: S6 preflight verify
+  expectedOutput: ""
+  model: anthropic/claude-sonnet-4.6
+  instructions:
+    - "Step one: do this"
+    - "Step two: do that"
+    - "Step three: verify"
+  toolset:
+    webSearch: true
+    codeInterpreter: false
+  supervision:
+    subordinates:
+      - skill: qa-second-skill
+  connections: []
+  contexts: []
+  access:
+    groupPermissions:
+      __everyone__:
+        use: true
+        manage: true
+    guardrails:
+      - no-pii
+      - no-profanity
+    ownerUserId: user_394iVT1ubV3OXrGmIqI0a8QrXLP
+    ownerEmail: eladdo@modus.direct
+  interfaces: []
+  evaluations: []

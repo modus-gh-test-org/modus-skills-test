@@ -1,0 +1,114 @@
+apiVersion: modus.dev/v1
+kind: Skill
+metadata:
+  externalUid: dd564b23-251a-469d-9ce4-9dbb014c15cd
+  name: test
+spec:
+  description: z
+  expectedOutput: ""
+  model: anthropic/claude-sonnet-4.6
+  instructions: []
+  toolset:
+    github:
+      actions:
+        - CompareCommits
+        - CreateInOrg
+        - CreateOrUpdateFileContents
+        - CreateRelease
+        - DeleteFile
+        - GetAllTopics
+        - GetBranch
+        - GetCommit
+        - GetContent
+        - GetLatestRelease
+        - GetReadme
+        - GetReleaseByTag
+        - GetRepo
+        - ListBranches
+        - ListCollaborators
+        - ListForOrg
+        - ListReleases
+        - ListTags
+        - CheckIfMerged
+        - CreatePull
+        - CreateReview
+        - CreateReviewComment
+        - DeletePendingReview
+        - GetPull
+        - ListCommits
+        - ListFiles
+        - ListPull
+        - ListReviewComments
+        - ListReviews
+        - MergePull
+        - RequestReviewers
+        - SubmitReview
+        - UpdateBranch
+        - UpdatePull
+        - AddAssignees
+        - AddLabels
+        - AddSubIssue
+        - CreateComment
+        - CreateIssue
+        - GetIssue
+        - ListComments
+        - ListForRepo
+        - ListLabelsForRepo
+        - Lock
+        - UpdateIssue
+        - CreateWorkflowDispatch
+        - GetWorkflow
+        - GetWorkflowRun
+        - ListJobsForWorkflowRun
+        - ListRepoWorkflows
+        - ListWorkflowRunsForRepo
+        - Code
+        - Commits
+        - IssuesAndPullRequests
+        - Repos
+        - Users
+        - CreateRef
+        - GetTree
+        - ListMembersInOrg
+        - ListTeam
+        - ListReposAccessibleToInstallation
+        - GetAuthenticated
+        - GetBlob
+  supervision:
+    subordinates: []
+  connections:
+    - connectionUid: 65de9b2f-b6bc-4b96-803c-9a6b44c5cc48
+      contextPreferences:
+        path: []
+  contexts:
+    - kind: query
+      query:
+        rules:
+          - rules:
+              - field: data_asset
+                value: "65de9b2f-b6bc-4b96-803c-9a6b44c5cc48:"
+                operator: in
+              - field: verification_status
+                value: positive,neutral
+                operator: in
+            combinator: and
+        combinator: or
+  access:
+    groupPermissions:
+      __everyone__:
+        use: true
+        manage: true
+    guardrails: []
+    ownerUserId: user_394iVT1ubV3OXrGmIqI0a8QrXLP
+    ownerEmail: eladdo@modus.direct
+  interfaces:
+    - id: interface_1777964281454
+      type: mcp
+      name: MCP Server
+      config:
+        tokens:
+          - tokenId: 89a79b72-69b4-4422-82c4-d3c8949e0592
+            createdAt: 2026-05-05T07:12:21.612Z
+            tokenPrefix: 1fd23e97c4e2ce9f
+      secretRefs: {}
+  evaluations: []

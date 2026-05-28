@@ -1,0 +1,60 @@
+apiVersion: modus.dev/v1
+kind: Skill
+metadata:
+  externalUid: 5a1ea2b1-b917-4bd0-ab4c-896b2df6ef5d
+  name: slack
+spec:
+  description: ""
+  expectedOutput: ""
+  model: anthropic/claude-sonnet-4.6
+  instructions: []
+  toolset:
+    slack:
+      rules:
+        allowedChannelIds:
+          - C0AMA621SUW
+      actions:
+        - OpenDm
+        - GetUserInfo
+        - GetUserPresence
+        - ListUsers
+        - LookupUserByEmail
+        - SendMessage
+        - CompleteUpload
+        - GetFileInfo
+        - GetUploadUrl
+        - ListFiles
+  supervision:
+    subordinates: []
+  connections:
+    - connectionUid: undefined
+  contexts:
+    - kind: query
+      query:
+        rules:
+          - rules:
+              - field: data_asset
+                value: "681af5a8-e953-4ac6-898a-32dda6fe419f:"
+                operator: in
+              - field: verification_status
+                value: positive,neutral
+                operator: in
+            combinator: and
+        combinator: or
+  access:
+    groupPermissions:
+      __everyone__:
+        use: true
+        manage: true
+    guardrails: []
+  interfaces:
+    - id: interface_1777905368723
+      type: mcp
+      name: MCP Server
+      config:
+        tokens:
+          - tokenId: 60fac8f0-a50e-4ab5-a96b-28ec3cc4b7ef
+            createdAt: 2026-05-12T14:01:37.011Z
+            tokenPrefix: 427f22e25ca7ff46
+      secretRefs: {}
+  evaluations: []

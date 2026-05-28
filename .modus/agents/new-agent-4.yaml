@@ -1,0 +1,84 @@
+apiVersion: modus.dev/v1
+kind: Agent
+metadata:
+  externalUid: 2fdae6ab-a527-40aa-85c5-1889ad7ffbff
+  name: New Agent
+spec:
+  type: workflow
+  description: Daily at 5:39 PM
+  trigger:
+    type: schedule
+    schedule:
+      frequency: daily
+      timeOfDay: 17:39
+      timezone: Asia/Jerusalem
+  agentSelection:
+    agents: []
+  workflowStructure:
+    nodes:
+      - id: "1"
+        data:
+          label: Start Automation
+          trigger:
+            schedule:
+              timezone: Asia/Jerusalem
+              frequency: daily
+              time_of_day: 17:39
+            trigger_type: schedule
+          description: Daily at 5:39 PM
+        type: start
+        position:
+          x: 9
+          y: -128
+      - id: node_1778057705838_1000
+        data:
+          label: Action Node
+          action:
+            tool_id: api_call
+            tool_name: API call
+            action_key: null
+            action_name: null
+            is_ai_based: true
+            runtime_scope:
+              kind: api_call
+              request:
+                url: https://jsonplaceholder.typicode.com/posts
+                query:
+                  userId: "3"
+                method: GET
+                timeoutSeconds: 10
+            ai_description: ""
+            configuredProps: null
+            action_description: null
+          description: "API call: Describe action"
+        type: action
+        position:
+          x: 9
+          y: 35
+      - id: node_1778064206497_1000
+        data:
+          agent:
+            task: bullets of all titles
+            model: claude-sonnet-4.6
+            agent_id: null
+            agent_ids: []
+          label: Agent Node
+          description: Direct agent task
+        type: agent
+        position:
+          x: 10
+          y: 196
+    edges:
+      - id: e_1_out_node_1778057705838_1000
+        source: "1"
+        target: node_1778057705838_1000
+      - id: e_node_1778057705838_1000_out_node_1778064206497_1000
+        source: node_1778057705838_1000
+        target: node_1778064206497_1000
+  access:
+    groupPermissions:
+      __everyone__:
+        use: true
+        manage: true
+    guardrails: []
+  interfaces: []

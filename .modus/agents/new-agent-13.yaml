@@ -1,0 +1,25 @@
+apiVersion: modus.dev/v1
+kind: Agent
+metadata:
+  externalUid: adeaa692-ac5e-47e7-92f7-2812af14a1da
+  name: New Agent
+spec:
+  type: task
+  description: ""
+  trigger:
+    type: manual
+  agentSelection:
+    agents:
+      - skill: api
+        priorityOrder: 1
+    model: claude-sonnet-4.6
+  workflowStructure:
+    nodes: []
+    edges: []
+  access:
+    groupPermissions:
+      __everyone__:
+        use: true
+        manage: true
+    guardrails: []
+  interfaces: []

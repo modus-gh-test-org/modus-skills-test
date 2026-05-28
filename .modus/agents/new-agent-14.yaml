@@ -1,0 +1,31 @@
+apiVersion: modus.dev/v1
+kind: Agent
+metadata:
+  externalUid: 1db439fe-77fd-4031-9ee8-242f23204d19
+  name: S5 Agent Renamed
+spec:
+  type: task
+  description: S5 agent push-on-deploy test
+  trigger:
+    type: schedule
+    schedule:
+      frequency: daily
+      timeOfDay: 09:00
+      timezone: Asia/Jerusalem
+  agentSelection:
+    agents:
+      - skill: qa-child-skill
+        priorityOrder: 1
+    model: anthropic/claude-sonnet-4.6
+  workflowStructure:
+    nodes: []
+    edges: []
+  access:
+    groupPermissions:
+      __everyone__:
+        use: true
+        manage: true
+    guardrails: []
+    ownerUserId: user_394iVT1ubV3OXrGmIqI0a8QrXLP
+    ownerEmail: eladdo@modus.direct
+  interfaces: []

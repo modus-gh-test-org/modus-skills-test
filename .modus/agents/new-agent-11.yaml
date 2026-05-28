@@ -1,0 +1,63 @@
+apiVersion: modus.dev/v1
+kind: Agent
+metadata:
+  externalUid: e7240c35-d6bf-443b-8839-3c76c132719c
+  name: New Agent
+spec:
+  type: workflow
+  description: Daily at 3:48 PM
+  trigger:
+    type: schedule
+    schedule:
+      frequency: daily
+      timeOfDay: 15:48
+      timezone: Asia/Jerusalem
+  agentSelection:
+    agents: []
+  workflowStructure:
+    nodes:
+      - id: "1"
+        data:
+          label: Start Automation
+          trigger:
+            schedule:
+              timezone: Asia/Jerusalem
+              frequency: daily
+              time_of_day: 15:48
+            trigger_type: schedule
+          description: Daily at 3:48 PM
+        type: start
+        position:
+          x: 0
+          y: 50
+      - id: node_1778586597393_1000
+        data:
+          agent:
+            task: 1+1=?
+            model: claude-sonnet-4.6
+            tools:
+              - slack
+            agent_id: 6
+            agent_ids:
+              - 6
+            agent_name: slack-mcp
+            agent_names:
+              - slack-mcp
+            integrations: []
+          label: Agent Node
+          description: slack-mcp
+        type: agent
+        position:
+          x: 0
+          y: 210
+    edges:
+      - id: e_1_out_node_1778586597393_1000
+        source: "1"
+        target: node_1778586597393_1000
+  access:
+    groupPermissions:
+      __everyone__:
+        use: true
+        manage: true
+    guardrails: []
+  interfaces: []

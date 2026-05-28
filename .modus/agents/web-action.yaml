@@ -1,0 +1,87 @@
+apiVersion: modus.dev/v1
+kind: Agent
+metadata:
+  externalUid: ca3a47a4-fa8e-49c7-96d7-666fe72715c6
+  name: web action
+spec:
+  type: workflow
+  description: Daily at 12:30 PM
+  trigger:
+    type: schedule
+    schedule:
+      frequency: daily
+      timeOfDay: 12:30
+      timezone: Asia/Jerusalem
+  agentSelection:
+    agents: []
+  workflowStructure:
+    nodes:
+      - id: "1"
+        data:
+          label: Start Automation
+          trigger:
+            schedule:
+              timezone: Asia/Jerusalem
+              frequency: daily
+              time_of_day: 12:30
+            trigger_type: schedule
+          description: Daily at 12:30 PM
+        type: start
+        position:
+          x: 0
+          y: 49
+      - id: node_1777568845215_1007
+        data:
+          label: Action Node
+          action:
+            tool_id: web_search
+            tool_name: Web Search
+            action_key: null
+            action_name: null
+            is_ai_based: true
+            runtime_scope: null
+            ai_description: "search news in israel today "
+            configuredProps: null
+            action_description: null
+          description: Configure this action
+        type: action
+        position:
+          x: 2
+          y: 189
+      - id: node_1777906099440_1000
+        data:
+          label: Action Node
+          action:
+            tool_id: slack
+            tool_name: Slack Integration
+            action_key: null
+            action_name: null
+            runtime_scope:
+              kind: nango
+              toolId: slack
+              actions:
+                - SendMessage
+              connectionId: 1990ef32-c675-4a25-824a-92b3deeec5c7
+            ai_description: |
+              send to "test-2-"
+            configuredProps: null
+            action_description: null
+          description: 'Slack Integration: send to "test-2-"'
+        type: action
+        position:
+          x: 2
+          y: 349
+    edges:
+      - id: e_1_out_node_1777568845215_1007
+        source: "1"
+        target: node_1777568845215_1007
+      - id: e_node_1777568845215_1007_out_node_1777906099440_1000
+        source: node_1777568845215_1007
+        target: node_1777906099440_1000
+  access:
+    groupPermissions:
+      __everyone__:
+        use: true
+        manage: true
+    guardrails: []
+  interfaces: []

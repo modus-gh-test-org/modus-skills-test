@@ -1,0 +1,25 @@
+apiVersion: modus.dev/v1
+kind: Skill
+metadata:
+  externalUid: 6d567dec-7573-43ff-8792-d529cf6089d4
+  name: QA Second Skill
+spec:
+  description: QA second baseline
+  expectedOutput: ""
+  model: anthropic/claude-sonnet-4.6
+  instructions: []
+  toolset: {}
+  supervision:
+    subordinates: []
+  connections: []
+  contexts: []
+  access:
+    groupPermissions:
+      __everyone__:
+        use: true
+        manage: true
+    guardrails: []
+    ownerUserId: user_394iVT1ubV3OXrGmIqI0a8QrXLP
+    ownerEmail: eladdo@modus.direct
+  interfaces: []
+  evaluations: []

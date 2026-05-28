@@ -1,0 +1,25 @@
+apiVersion: modus.dev/v1
+kind: Skill
+metadata:
+  externalUid: 761e0337-1992-4b2b-8ed6-5ba02d9f70dc
+  name: test-1907
+spec:
+  description: "12"
+  expectedOutput: ""
+  model: anthropic/claude-sonnet-4.6
+  instructions: []
+  toolset: {}
+  supervision:
+    subordinates: []
+  connections: []
+  contexts: []
+  access:
+    groupPermissions:
+      __everyone__:
+        use: true
+        manage: true
+    guardrails: []
+    ownerUserId: user_394iVT1ubV3OXrGmIqI0a8QrXLP
+    ownerEmail: eladdo@modus.direct
+  interfaces: []
+  evaluations: []

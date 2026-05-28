@@ -1,0 +1,34 @@
+apiVersion: modus.dev/v1
+kind: Skill
+metadata:
+  externalUid: e2f74767-abe2-4d83-b3ab-b39fd93ae321
+  name: web
+spec:
+  description: ""
+  expectedOutput: ""
+  model: anthropic/claude-sonnet-4.6
+  instructions: []
+  toolset:
+    web_search:
+      - tavily_search
+  supervision:
+    subordinates: []
+  connections: []
+  contexts: []
+  access:
+    groupPermissions:
+      __everyone__:
+        use: true
+        manage: true
+    guardrails: []
+  interfaces:
+    - id: interface_1777962069662
+      type: mcp
+      name: MCP Server
+      config:
+        tokens:
+          - tokenId: 6028024c-8e29-45a7-864b-f4834ce6c679
+            createdAt: 2026-05-05T06:21:11.017Z
+            tokenPrefix: 78bd52cd851daca2
+      secretRefs: {}
+  evaluations: []

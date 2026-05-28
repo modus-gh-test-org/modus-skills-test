@@ -1,0 +1,34 @@
+apiVersion: modus.dev/v1
+kind: Skill
+metadata:
+  externalUid: ed920fff-08fc-49b6-b8f6-a3e39d62e089
+  name: API
+spec:
+  description: QA api desc continued run
+  expectedOutput: ""
+  model: anthropic/claude-sonnet-4.6
+  instructions:
+    - "# JSONPlaceholder API — Endpoints  **Base URL:** `https://jsonplaceholder.typicode.com`  ## Resources  | Resource    | Count | | ----------- | ----- | | `/posts`    | 100   | | `/comments` | 500   | | `/albums`   | 100   | | `/photos`   | 5000  | | `/todos`    | 200   | | `/users`    | 10    |  ## Endpoints  | Method   | Endpoint              | Body / Params                          | | -------- | --------------------- | -------------------------------------- | | `GET`    | `/{resource}`         | —                                      | | `GET`    | `/{resource}/{id}`    | —                                      | | `GET`    | `/{resource}?key=val` | Query params (e.g. `?userId=1`)        | | `POST`   | `/{resource}`         | JSON body — full object (no `id`)      | | `PUT`    | `/{resource}/{id}`    | JSON body — full object (replaces all) | | `PATCH`  | `/{resource}/{id}`    | JSON body — partial fields only        | | `DELETE` | `/{resource}/{id}`    | —                                      |  **Headers for write operations:**  ``` Content-type: application/json; charset=UTF-8 ```  ## Nested routes  | Endpoint               | Equivalent to            | | ---------------------- | ------------------------ | | `/posts/{id}/comments` | `/comments?postId={id}`  | | `/albums/{id}/photos`  | `/photos?albumId={id}`   | | `/users/{id}/albums`   | `/albums?userId={id}`    | | `/users/{id}/todos`    | `/todos?userId={id}`     | | `/users/{id}/posts`    | `/posts?userId={id}`     |  ## Resource shapes  ### Post  ```js { userId: 1, id: 1, title: '...', body: '...' } ```  ### Comment  ```js { postId: 1, id: 1, name: '...', email: '...', body: '...' } ```  ### Album  ```js { userId: 1, id: 1, title: '...' } ```  ### Photo  ```js { albumId: 1, id: 1, title: '...', url: '...', thumbnailUrl: '...' } ```  ### Todo  ```js { userId: 1, id: 1, title: '...', completed: false } ```  ### User  ```js {   id: 1,   name: '...',   username: '...',   email: '...',   address: {     street: '...',     suite: '...',     city: '...',     zipcode: '...',     geo: { lat: '...', lng: '...' }   },   phone: '...',   website: '...',   company: { name: '...', catchPhrase: '...', bs: '...' } } ```  > Writes (POST/PUT/PATCH/DELETE) return realistic responses but are not persisted server-side."
+  toolset:
+    api_call:
+      - api_request
+  supervision:
+    subordinates: []
+  connections: []
+  contexts: []
+  access:
+    groupPermissions:
+      __everyone__:
+        use: true
+        manage: true
+    guardrails: []
+    ownerUserId: user_394iVT1ubV3OXrGmIqI0a8QrXLP
+    ownerEmail: eladdo@modus.direct
+  interfaces:
+    - id: interface_1778251774291
+      type: mcp
+      name: MCP Server
+      config:
+        tokens: []
+      secretRefs: {}
+  evaluations: []
